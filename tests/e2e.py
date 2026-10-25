@@ -71,8 +71,15 @@ with sync_playwright() as p:
     for i in m['icons']:
         r = page.request.get(base + i['src'])
         check(f"icon {i['src']} ({i['purpose']})", r.ok and r.headers['content-type'] == 'image/png')
-    sw = page.evaluate("""async () => { const r = await navigator.serviceWorker.ready;
-        return { scope: r.scope, state: r.active && r.active.state }; }""")
+    # `ready` resolves once there is an active worker, which may still be 'activating'.
+    sw = page.evaluate("""async () => {
+        const r = await navigator.serviceWorker.ready;
+        if (r.active.state !== 'activated') {
+            await new Promise((res) => r.active.addEventListener('statechange', function f() {
+                if (r.active.state === 'activated') { r.active.removeEventListener('statechange', f); res(); }
+            }));
+        }
+        return { scope: r.scope, state: r.active.state }; }""")
     check('service worker registers & activates', sw['state'] == 'activated', json.dumps(sw))
     page.reload()
     page.wait_for_selector('.days')

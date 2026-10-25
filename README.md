@@ -56,6 +56,8 @@ Exercise images load from `raw.githubusercontent.com` and are cached once viewed
 
 ## Deploy (GitHub Pages)
 
-1. Create a **public** repo, e.g. `gym-tracker`, and push this folder to `main`.
-2. Go to **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, and set `main` / `(root)`.
-3. The site goes live at `https://<user>.github.io/gym-tracker/`. Every path is relative, so any repo name works.
+**Live at https://schneiderthomas.github.io/gym_tracker/**. GitHub Pages publishes it from the `main` branch, folder `/` (root).
+
+To update the site, bump `VERSION` in `sw.js`, then commit and push to `main`. Pages redeploys in a minute or two. Installed copies pick up the new version the next time they're opened online.
+
+Pages needs a **public** repo on a free GitHub plan. Private repos need GitHub Pro, Team or Enterprise.
