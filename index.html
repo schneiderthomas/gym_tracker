@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gym Tracker</title>
+  <meta name="description" content="A simple strength-training log that works offline.">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Gym Tracker">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Gym Tracker</h1>
+    <div id="hud" aria-live="polite"></div>
+  </header>
+  <main id="main"><p class="muted">Loading…</p></main>
+  <dialog id="picker" aria-label="Add exercise"></dialog>
+  <dialog id="confirm" aria-label="Confirm"></dialog>
+  <div id="toast" role="status" hidden></div>
+  <nav>
+    <button data-tab="workout">🏋️<span>Workout</span></button>
+    <button data-tab="routines">📋<span>Routines</span></button>
+    <button data-tab="history">📅<span>History</span></button>
+    <button data-tab="progress">🏅<span>Progress</span></button>
+    <button data-tab="settings">⚙️<span>Settings</span></button>
+  </nav>
+  <noscript>This app needs JavaScript.</noscript>
+</body>
+</html>

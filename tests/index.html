@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gym Tracker tests</title>
+</head>
+<body>
+  <pre id="out">running…</pre>
+  <script type="module">
+    import { run } from './runner.js';
+    import './logic.test.js';
+    import './suggestions.test.js';
+    const report = await run();
+    document.getElementById('out').textContent = report;
+    console.log(report);
+  </script>
+</body>
+</html>
